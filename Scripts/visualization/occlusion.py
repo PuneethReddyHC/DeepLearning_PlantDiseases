@@ -55,7 +55,7 @@ def diff_states(dict_canonical, dict_subset):
 
 def load_defined_model(path, num_classes,name):
     model = models.__dict__[name](num_classes=num_classes)
-    pretrained_state = torch.load(path,map_location=lambda storage, location: 'cpu')
+    pretrained_state = torch.load(path,map_location=lambda storage, loc: storage)
     new_pretrained_state= OrderedDict()
    
     for k, v in pretrained_state['state_dict'].items():
