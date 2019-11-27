@@ -75,7 +75,7 @@ def load_defined_model(path, num_classes,name):
 
 
 #Load the model
-, 
+
 model= load_defined_model(args.model_path,args.classes,args.arch,map_location=lambda storage, location: 'cpu')
 use_gpu = torch.cuda.is_available()
 
