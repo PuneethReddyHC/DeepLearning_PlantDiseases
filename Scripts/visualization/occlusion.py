@@ -55,7 +55,7 @@ def diff_states(dict_canonical, dict_subset):
 
 def load_defined_model(path, num_classes,name):
     model = models.__dict__[name](num_classes=num_classes)
-    pretrained_state = torch.load(path)
+    pretrained_state = torch.load(path,map_location=lambda storage, location: 'cpu')
     new_pretrained_state= OrderedDict()
    
     for k, v in pretrained_state['state_dict'].items():
@@ -76,7 +76,7 @@ def load_defined_model(path, num_classes,name):
 
 #Load the model
 
-model= load_defined_model(args.model_path,args.classes,args.arch,map_location=lambda storage, location: 'cpu')
+model= load_defined_model(args.model_path,args.classes,args.arch)
 use_gpu = torch.cuda.is_available()
 
 
